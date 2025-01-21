@@ -1,0 +1,4 @@
+https://www.flightradar24.com/data/aircraft/hs-txa
+https://www.flightradar24.com/data/aircraft/hs-xto
+https://www.flightradar24.com/data/aircraft/hs-xtp
+https://www.flightradar24.com/data/aircraft/hs-xtq
