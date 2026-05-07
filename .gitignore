@@ -1,21 +1,35 @@
-# Local environment files
+# Local environment files and secrets
 .env
 .env.*
+.env.local
 !.env.example
 
-# Dependency directories
+# Dependencies
 node_modules/
-.venv/
-venv/
+
+# Build outputs
+build/
+dist/
+coverage/
+.next/
+out/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
 
 # Python cache/build artifacts
+.venv/
+venv/
 __pycache__/
 *.py[cod]
 .pytest_cache/
 .coverage
 htmlcov/
-dist/
-build/
 *.egg-info/
 
 # Editor and OS files
@@ -23,6 +37,3 @@ build/
 .idea/
 .DS_Store
 Thumbs.db
-
-# Logs
-*.log
