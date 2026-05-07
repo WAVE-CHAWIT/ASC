@@ -1,92 +1,92 @@
-# E-budget project FastAPI backend
+# E-budget
 
-Private FastAPI backend starter for the E-budget project.
+E-budget is a private React + Vite starter project for an internal budget tracking and monitoring dashboard.
 
-## Security rules
+The first version is frontend-only and uses mock data. It is designed to help teams present and monitor budget planning, approved budget, used budget, remaining budget, payment progress, and budget status before any backend integration is added.
+
+## Security note
 
 - Keep this GitHub repository private.
-- Never commit `.env`, API keys, passwords, tokens, database credentials, or private data.
-- Use `.env.example` only to document required variable names with placeholder values.
-- Work on feature branches and open pull requests. Do not merge directly into `main`.
+- Do not commit `.env`, API keys, passwords, tokens, credentials, or private data.
+- Use `.env.example` only for placeholder values.
+- Store real environment values locally in `.env` or in secure GitHub environment secrets.
+- Work on feature branches and open pull requests instead of merging directly into `main`.
 
 ## Project structure
 
 ```text
 .
-├── .env.example      # Placeholder-only environment variable names
-├── .gitignore        # Prevents secrets, caches, builds, logs, and OS files from being committed
-├── README.md         # Setup and development instructions
-├── requirements.txt  # Python dependencies
-└── app/
-    ├── main.py       # FastAPI app and health check endpoint
-    ├── api/          # API route modules
-    ├── core/         # Core settings, configuration, and shared utilities
-    ├── models/       # Data models and schemas
-    └── services/     # Business logic and external service integrations
+├── .env.example
+├── .gitignore
+├── README.md
+├── index.html
+├── package.json
+└── src/
+    ├── components/
+    │   ├── BudgetTable.jsx
+    │   ├── KPICard.jsx
+    │   └── StatusBadge.jsx
+    ├── data/
+    │   └── budgetData.js
+    ├── pages/
+    │   └── Dashboard.jsx
+    ├── App.jsx
+    ├── main.jsx
+    └── index.css
 ```
+
+## Features in this starter
+
+- Professional internal dashboard layout for government or corporate budget monitoring.
+- KPI cards for total budget, approved budget, used budget, remaining budget, and spending progress percentage.
+- Budget monitoring table with budget code, budget name, department, fiscal year, totals, progress, and status.
+- Status badges for Planned, Approved, In Progress, Completed, and Over Budget.
+- Progress indicators for spending percentage.
+- Department and status filters.
+- Mock JSON-style JavaScript data only; no backend integration yet.
 
 ## Environment variables
 
-Create a local `.env` file from the placeholder example when you need local values:
+Create a local `.env` file only when needed:
 
 ```bash
 cp .env.example .env
 ```
 
-Required variables documented in `.env.example`:
+The example file contains placeholder values only:
 
 ```env
-DATABASE_URL=your_database_url_here
-OPENAI_API_KEY=your_api_key_here
+VITE_API_BASE_URL=your_api_base_url_here
 ```
 
-Replace placeholders only in your local `.env` file or in GitHub environment secrets. Do not commit real values.
+Do not commit `.env` or replace placeholders in `.env.example` with real values.
 
-## Local setup
-
-1. Create and activate a Python virtual environment:
-
-   ```bash
-   python -m venv .venv
-   source .venv/bin/activate
-   ```
-
-2. Install dependencies:
-
-   ```bash
-   python -m pip install -r requirements.txt
-   ```
-
-3. Start the development server:
-
-   ```bash
-   uvicorn app.main:app --reload
-   ```
-
-4. Open the health check endpoint:
-
-   ```text
-   http://127.0.0.1:8000/health
-   ```
-
-Expected response:
-
-```json
-{"status":"ok"}
-```
-
-## Basic checks
-
-Run these before opening a pull request:
+## Install
 
 ```bash
-python -m compileall app
-python - <<'PY'
-from fastapi.testclient import TestClient
-from app.main import app
+npm install
+```
 
-response = TestClient(app).get('/health')
-assert response.status_code == 200
-assert response.json() == {'status': 'ok'}
-PY
+## Run locally
+
+```bash
+npm run dev
+```
+
+Then open the local URL printed by Vite, usually:
+
+```text
+http://localhost:5173
+```
+
+## Build
+
+```bash
+npm run build
+```
+
+## Preview production build
+
+```bash
+npm run preview
 ```
