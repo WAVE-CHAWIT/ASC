@@ -1,6 +1,6 @@
-# ASC
+# E-budget project
 
-Starter repository for the ASC project.
+Starter repository for the E-budget project.
 
 ## Environment setup
 
@@ -10,7 +10,7 @@ Starter repository for the ASC project.
    cp .env.example .env
    ```
 
-2. Edit `.env` with local values for your machine.
+2. Edit `.env` with local values for your machine. The default `PROJECT_NAME` is `E-budget project`.
 
 3. Keep real secrets out of Git. The `.gitignore` file excludes local `.env` files while keeping `.env.example` committed as documentation for required variables.
 
