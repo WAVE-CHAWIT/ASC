@@ -61,6 +61,10 @@ VITE_API_BASE_URL=your_api_base_url_here
 
 Do not commit `.env` or replace placeholders in `.env.example` with real values.
 
+## Pull request workflow
+
+Use this branch as a clean replacement pull request for the E-budget frontend starter. Review and merge through GitHub only after the install and build checks pass in an environment with npm registry access.
+
 ## Install
 
 ```bash
