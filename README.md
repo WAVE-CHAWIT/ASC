@@ -1,81 +1,92 @@
-# E-budget project
+# E-budget project FastAPI backend
 
-Clean starter project for building the E-budget application safely.
+Private FastAPI backend starter for the E-budget project.
 
 ## Security rules
 
-- Keep the GitHub repository private unless you intentionally decide otherwise.
-- Never commit `.env`, `.env.local`, API keys, passwords, tokens, database credentials, or private data.
-- Use `.env.example` only for placeholder values and required variable names.
-- Work on feature branches and open pull requests instead of merging directly into `main`.
+- Keep this GitHub repository private.
+- Never commit `.env`, API keys, passwords, tokens, database credentials, or private data.
+- Use `.env.example` only to document required variable names with placeholder values.
+- Work on feature branches and open pull requests. Do not merge directly into `main`.
 
-## Recommended project structure
+## Project structure
 
 ```text
 .
-├── .env.example       # Placeholder environment variables only
-├── .gitignore         # Keeps secrets, dependencies, build outputs, logs, and OS files out of Git
-├── README.md          # Project overview and setup instructions
-├── package.json       # Node.js scripts and project metadata
-├── src/               # Application source code
-│   ├── config.js      # Environment-backed configuration helpers
-│   └── index.js       # Starter application entry point
-└── test/              # Automated tests
-    └── config.test.js # Configuration tests
+├── .env.example      # Placeholder-only environment variable names
+├── .gitignore        # Prevents secrets, caches, builds, logs, and OS files from being committed
+├── README.md         # Setup and development instructions
+├── requirements.txt  # Python dependencies
+└── app/
+    ├── main.py       # FastAPI app and health check endpoint
+    ├── api/          # API route modules
+    ├── core/         # Core settings, configuration, and shared utilities
+    ├── models/       # Data models and schemas
+    └── services/     # Business logic and external service integrations
 ```
-
-This structure keeps the starter project small while leaving room to add UI, API, database, and deployment folders later.
-
-## Local setup
-
-1. Clone the private repository.
-2. Install dependencies:
-
-   ```bash
-   npm install
-   ```
-
-3. Create a local environment file from the placeholder template:
-
-   ```bash
-   cp .env.example .env
-   ```
-
-4. Edit `.env` for your local machine only. Do not commit `.env`.
-5. Run the starter app:
-
-   ```bash
-   npm start
-   ```
 
 ## Environment variables
 
-`.env.example` documents the variable names the project expects. It intentionally contains placeholder values only:
-
-- `PROJECT_NAME`
-- `APP_ENV`
-- `APP_HOST`
-- `APP_PORT`
-- `OPENAI_API_KEY`
-- `DATABASE_URL`
-
-If you add a new required environment variable, add its name to `.env.example` with a safe placeholder value such as `your_value_here`.
-
-## GitHub environment setup
-
-For deployment or CI/CD secrets, use GitHub environments instead of committed files:
-
-1. Open the private repository on GitHub.
-2. Go to **Settings** → **Environments**.
-3. Create environments such as `development`, `staging`, and `production`.
-4. Add deployment values from `.env.example` as GitHub environment variables or secrets.
-5. Reference those GitHub secrets from Actions workflows when automation is added.
-
-## Checks
-
-Run these commands before opening a pull request:
+Create a local `.env` file from the placeholder example when you need local values:
 
 ```bash
-npm run build
-npm test
+cp .env.example .env
+```
+
+Required variables documented in `.env.example`:
+
+```env
+DATABASE_URL=your_database_url_here
+OPENAI_API_KEY=your_api_key_here
+```
+
+Replace placeholders only in your local `.env` file or in GitHub environment secrets. Do not commit real values.
+
+## Local setup
+
+1. Create and activate a Python virtual environment:
+
+   ```bash
+   python -m venv .venv
+   source .venv/bin/activate
+   ```
+
+2. Install dependencies:
+
+   ```bash
+   python -m pip install -r requirements.txt
+   ```
+
+3. Start the development server:
+
+   ```bash
+   uvicorn app.main:app --reload
+   ```
+
+4. Open the health check endpoint:
+
+   ```text
+   http://127.0.0.1:8000/health
+   ```
+
+Expected response:
+
+```json
+{"status":"ok"}
+```
+
+## Basic checks
+
+Run these before opening a pull request:
+
+```bash
+python -m compileall app
+python - <<'PY'
+from fastapi.testclient import TestClient
+from app.main import app
+
+response = TestClient(app).get('/health')
+assert response.status_code == 200
+assert response.json() == {'status': 'ok'}
+PY
 ```

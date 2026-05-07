@@ -1,36 +1,32 @@
-# Local environment files and secrets
+# Environment files and secrets
 .env
 .env.*
-.env.local
 !.env.example
 
-# Dependencies
-node_modules/
-
-# Build outputs
-build/
-dist/
-coverage/
-.next/
-out/
-
-# Logs
-logs/
-*.log
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-pnpm-debug.log*
-
-# Python cache/build artifacts
+# Python virtual environments
 .venv/
 venv/
+env/
+
+# Python cache/test/build artifacts
 __pycache__/
 *.py[cod]
+*$py.class
 .pytest_cache/
+.mypy_cache/
+.ruff_cache/
 .coverage
 htmlcov/
+build/
+dist/
 *.egg-info/
+
+# FastAPI/local runtime files
+*.log
+logs/
+
+# Dependency and tooling folders
+node_modules/
 
 # Editor and OS files
 .vscode/
