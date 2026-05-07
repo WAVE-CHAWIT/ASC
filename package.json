@@ -1,0 +1,19 @@
+{
+  "name": "e-budget",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Frontend dashboard starter for internal budget tracking and monitoring.",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "react": "latest",
+    "react-dom": "latest"
+  },
+  "devDependencies": {
+    "vite": "latest"
+  }
+}
