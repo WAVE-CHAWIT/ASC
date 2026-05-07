@@ -1,0 +1,28 @@
+# Local environment files
+.env
+.env.*
+!.env.example
+
+# Dependency directories
+node_modules/
+.venv/
+venv/
+
+# Python cache/build artifacts
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.coverage
+htmlcov/
+dist/
+build/
+*.egg-info/
+
+# Editor and OS files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
